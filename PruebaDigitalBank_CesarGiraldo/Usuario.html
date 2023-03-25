@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+        function Save() {
+            var url = 'http://localhost:54226/Service.svc'
+            var response;
+            $.ajax({
+                type: 'Post',
+                url: url + 'Agregar',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (msg) {
+                    alert(msg);
+                },
+
+                error: function (e) {
+                    alert("Error  : " + e.statusText);
+                }
+            });
+        }
+    </script>
+    <title>Usuario</title>
+</head>
+<body>
+    <label>Nombre: </label><input type="text" maxlength="100" id="name" /><br />
+    <label>Fecha Nacimiento: </label><input type="date" id="bdate" /><br />
+    <label>Sexo: </label><select id="sex">
+        <option value="F">Femenino</option>
+        <option value="M">Masculino</option>
+    </select><br />
+    <button onclick="Save()">Guardar</button>
+</body>
+</html>
